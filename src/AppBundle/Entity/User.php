@@ -12,6 +12,8 @@ use FOS\UserBundle\Entity\User as BaseUser;
 class User extends BaseUser
 {
   /**
+   * @var int
+   *
    * @ORM\Id()
    * @ORM\Column(type="integer")
    * @ORM\GeneratedValue(strategy="AUTO")
@@ -19,16 +21,16 @@ class User extends BaseUser
   protected $id;
 
   /**
-   * @ORM\Column(name="first_name", type="string", length=255)
-   *
    * @var string
+   *
+   * @ORM\Column(name="first_name", type="string", length=255)
    */
   protected $firstName;
 
   /**
-   * @ORM\Column(name="last_name", type="string", length=255)
-   *
    * @var string
+   *
+   * @ORM\Column(name="last_name", type="string", length=255)
    */
   protected $lastName;
 

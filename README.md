@@ -17,3 +17,7 @@ Create the database, setup the schema, and load the fixtures:
 php app/console doctrine:schema:update --force
 php app/console doctrine:fixtures:load
 ```
+
+## Credits
+
+- [Clean Blog template](https://startbootstrap.com/template-overviews/clean-blog/) provided by [David Miller](http://davidmiller.io/).

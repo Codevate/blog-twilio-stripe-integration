@@ -13,10 +13,18 @@ composer install
 Create the database, setup the schema, and load the fixtures:
 
 ```
- php app/console doctrine:database:create --if-not-exists
+php app/console doctrine:database:create --if-not-exists
 php app/console doctrine:schema:update --force
 php app/console doctrine:fixtures:load
 ```
+
+Start the server:
+
+```
+php app/console server:run
+```
+
+You can now log in with the username and password `test` at http://127.0.0.1:8000/login
 
 ## Credits
 

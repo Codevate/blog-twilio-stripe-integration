@@ -10,7 +10,12 @@
           <div class="post-heading">
             <h1>{{ post.title }}</h1>
             <h2 class="subheading">{{ post.subtitle }}</h2>
-            <span class="meta">Posted on the {{ post.createdAt|date('jS F, Y') }}</span>
+            <span class="meta">
+              Posted on the {{ post.createdAt|date('jS F, Y') }}
+              {% if post.premium %}
+                {% include 'premium/_label.html.twig' %}
+              {% endif %}
+            </span>
           </div>
         </div>
       </div>

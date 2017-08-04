@@ -31,6 +31,7 @@ class LoadPostData implements FixtureInterface
 EOF;
     $post->setContent($content);
     $post->setImagePath('img/post-bg.jpg');
+    $post->setPremium(true);
     $manager->persist($post);
     $manager->flush();
 

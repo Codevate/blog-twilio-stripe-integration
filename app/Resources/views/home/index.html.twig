@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% set is_home = true %}
+
 {% block title %}Home{% endblock %}
 
 {% block content %}
@@ -13,7 +15,12 @@
           {{ post.subtitle }}
         </h3>
       </a>
-      <p class="post-meta">Posted on the {{ post.createdAt|date('jS F, Y') }}</p>
+      <p class="post-meta">
+        Posted on the {{ post.createdAt|date('jS F, Y') }}
+        {% if post.premium %}
+          {% include 'premium/_label.html.twig' %}
+        {% endif %}
+      </p>
     </div>
     <hr>
   {% endfor %}

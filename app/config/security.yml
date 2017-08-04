@@ -22,3 +22,7 @@ security:
                 csrf_provider: security.csrf.token_manager
             logout:       true
             anonymous:    true
+            access_denied_handler: app.security.access_denied_handler
+
+    access_control:
+        - { path: ^/premium, roles: IS_AUTHENTICATED_REMEMBERED }

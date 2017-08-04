@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\HasPremium;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -12,6 +13,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  */
 class Post
 {
+  use HasPremium;
   use TimestampableEntity;
 
   /**

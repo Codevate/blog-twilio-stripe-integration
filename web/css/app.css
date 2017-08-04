@@ -1,0 +1,25 @@
+.label-premium {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  text-transform: uppercase;
+  background-color: #f0cc00;
+}
+
+.post-meta .label-premium,
+.meta .label-premium {
+  margin-left: 15px;
+}
+
+.site-heading.small {
+  padding: 10px 0;
+}
+
+.site-heading.small h1 {
+  font-size: 60px;
+}
+
+label.required:after {
+  color: #e32;
+  content: ' *';
+  display:inline;
+}

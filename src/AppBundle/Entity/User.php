@@ -2,15 +2,18 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\HasPremium;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\Table(name="`user`")
  */
 class User extends BaseUser
 {
+  use HasPremium;
+
   /**
    * @var int
    *

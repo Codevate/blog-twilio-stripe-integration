@@ -1,3 +1,7 @@
+{% if is_home is not defined %}
+  {% set is_home = false %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +19,7 @@
 
   <!-- Theme CSS -->
   <link href="{{ asset('css/clean-blog.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
   <!-- Custom Fonts -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -71,10 +76,12 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <div class="site-heading">
+          <div class="site-heading {% if not is_home %}small{% endif %}">
             <h1>B L O G</h1>
-            <hr class="small">
-            <span class="subheading">This Is My Blog</span>
+            {% if is_home %}
+              <hr class="small">
+              <span class="subheading">This Is My Blog</span>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -87,6 +94,14 @@
   {% block content_container %}
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {% for label, flashes in app.session.flashbag.all %}
+          {% for flash in flashes %}
+            <div class="alert alert-{{ label }}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ flash }}
+            </div>
+          {% endfor %}
+        {% endfor %}
         {% block content %}{% endblock %}
       </div>
     </div>
@@ -136,8 +151,13 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
 <!-- Theme JavaScript -->
 <script src="{{ asset('js/clean-blog.js') }}"></script>
+
+{% block javascript %}{% endblock %}
 
 </body>
 </html>

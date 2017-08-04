@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
+use AppBundle\Security\PostVoter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -29,9 +30,11 @@ class BlogController extends Controller
    */
   public function postAction(Post $post)
   {
-    return $this->render(':blog:post.html.twig', array(
+    $this->denyAccessUnlessGranted(PostVoter::VIEW, $post);
+
+    return $this->render(':blog:post.html.twig', [
       'post' => $post,
-    ));
+    ]);
   }
 
   /**
@@ -41,9 +44,9 @@ class BlogController extends Controller
    */
   public function postRedirectAction(Post $post)
   {
-    return $this->redirectToRoute('blog_post', array(
+    return $this->redirectToRoute('blog_post', [
       'id' => $post->getId(),
       'slug' => $post->getSlug(),
-    ));
+    ]);
   }
 }

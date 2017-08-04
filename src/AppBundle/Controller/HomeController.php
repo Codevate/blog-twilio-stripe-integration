@@ -14,8 +14,8 @@ class HomeController extends Controller
    */
   public function indexAction()
   {
-    return $this->render('home/index.html.twig', array(
+    return $this->render('home/index.html.twig', [
       'posts' => $this->getDoctrine()->getRepository('AppBundle:Post')->getLatest(),
-    ));
+    ]);
   }
 }

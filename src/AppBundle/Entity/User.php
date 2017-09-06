@@ -38,6 +38,20 @@ class User extends BaseUser
   protected $lastName;
 
   /**
+   * @var PhoneNumber
+   *
+   * @ORM\Embedded(class="AppBundle\Entity\PhoneNumber", columnPrefix="phone_")
+   */
+  protected $phoneNumber;
+
+  public function __construct()
+  {
+    parent::__construct();
+
+    $this->phoneNumber = new PhoneNumber();
+  }
+
+  /**
    * @return string
    */
   public function getFullName()
@@ -81,5 +95,24 @@ class User extends BaseUser
   public function getLastName()
   {
     return $this->lastName;
+  }
+
+  /**
+   * @param PhoneNumber $phoneNumber
+   * @return $this
+   */
+  public function setPhoneNumber(PhoneNumber $phoneNumber = null)
+  {
+    $this->phoneNumber = $phoneNumber;
+
+    return $this;
+  }
+
+  /**
+   * @return PhoneNumber
+   */
+  public function getPhoneNumber()
+  {
+    return $this->phoneNumber;
   }
 }

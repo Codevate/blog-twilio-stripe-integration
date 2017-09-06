@@ -3,7 +3,38 @@
 {% block title %}Get Premium - Verification{% endblock %}
 
 {% block content %}
+  {% if form is defined %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+  {% endif %}
+  {% if verification_code is defined %}
+    <p>You will receive a call from <strong>{{ twilio_number }}</strong>. When prompted, please enter the following code:</p>
+    <h2>{{ verification_code }}</h2>
+    <p>No phone call? <a href="{{ path('premium_verify', {reset: true}) }}">Re-enter your phone number.</a></p>
+  {% endif %}
 {% endblock %}
 
 {% block javascript %}
+  {% if verification_code is defined %}
+    <script type="text/javascript">
+      (function poll() {
+        var timeout = 5000;
+
+        setTimeout(function() {
+          $.ajax({
+            url: Routing.generate('premium_verify'),
+            dataType: 'json',
+            complete: poll,
+            timeout: timeout,
+            success: function (data) {
+              if (data.premium) {
+                window.location.replace('{{ redirect }}');
+              }
+            }
+          });
+        }, timeout);
+      })();
+    </script>
+  {% endif %}
 {% endblock %}

@@ -15,6 +15,26 @@ services:
         class: AppBundle\Security\AccessDeniedHandler
         arguments: ['@router', '@session']
 
+    app.validator.e164_number:
+        class: AppBundle\Validator\Constraints\E164NumberValidator
+        arguments: ['@twilio.client']
+        tags:
+            - { name: validator.constraint_validator }
+
+    app.listener.twilio_request:
+        class: AppBundle\EventSubscriber\TwilioRequestListener
+        arguments: ['@twilio.request_validator']
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+    twilio.client:
+        class: Twilio\Rest\Client
+        arguments: ['%twilio_sid%', '%twilio_token%']
+
+    twilio.request_validator:
+        class: Twilio\Security\RequestValidator
+        arguments: ['%twilio_token%']
+
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:

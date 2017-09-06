@@ -17,3 +17,7 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    twilio_sid: ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    twilio_token: your_auth_token
+    twilio_number: '+441234567890'

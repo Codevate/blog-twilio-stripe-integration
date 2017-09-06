@@ -25,6 +25,7 @@
         "stof/doctrine-extensions-bundle": "^1.2",
         "twilio/sdk": "^5.13",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
+        "stripe/stripe-php": "^5.1",
         "twig/extensions": "^1.5"
     },
     "require-dev": {

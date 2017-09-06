@@ -7,6 +7,10 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    payment:
+        currency: GBP
+        decimal: true
+        premium_amount: 1
 
 framework:
     #esi:             ~

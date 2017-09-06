@@ -44,6 +44,13 @@ class User extends BaseUser
    */
   protected $phoneNumber;
 
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="charge_id", type="string", length=255, nullable=true)
+   */
+  protected $chargeId;
+
   public function __construct()
   {
     parent::__construct();
@@ -114,5 +121,24 @@ class User extends BaseUser
   public function getPhoneNumber()
   {
     return $this->phoneNumber;
+  }
+
+  /**
+   * @param string $chargeId
+   * @return $this
+   */
+  public function setChargeId($chargeId)
+  {
+    $this->chargeId = $chargeId;
+
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getChargeId()
+  {
+    return $this->chargeId;
   }
 }

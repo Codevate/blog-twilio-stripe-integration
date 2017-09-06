@@ -21,3 +21,7 @@ parameters:
     twilio_sid: ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     twilio_token: your_auth_token
     twilio_number: '+441234567890'
+
+    stripe_public_key: pk_test_xxxxxxxxxxxxxxxxxxxxxxxx
+    stripe_secret_key: sk_test_xxxxxxxxxxxxxxxxxxxxxxxx
+    stripe_signing_secret: whsec_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

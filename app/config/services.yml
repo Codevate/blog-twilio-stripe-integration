@@ -27,6 +27,16 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
 
+    app.subscriber.stripe_event:
+        class: AppBundle\EventSubscriber\StripeEventSubscriber
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.client.stripe:
+        class: AppBundle\Client\StripeClient
+        arguments: ['%stripe_secret_key%', '%payment%', '@doctrine.orm.entity_manager', '@logger']
+
     twilio.client:
         class: Twilio\Rest\Client
         arguments: ['%twilio_sid%', '%twilio_token%']

@@ -9,6 +9,6 @@
   {% else %}
     <p>You can gain access via one of the following methods:</p>
     <a href="{{ path('premium_verify') }}" class="btn btn-default">Phone verification</a>
-    <a href="{{ path('premium_payment') }}" class="btn btn-default">Pay securely</a>
+    <a href="{{ path('premium_payment') }}" class="btn btn-default">Pay {{ payment_config.premium_amount|localizedcurrency(payment_config.currency) }} securely</a>
   {% endif %}
 {% endblock %}

@@ -2,6 +2,8 @@
 
 A companion Symfony project for our blog post on integrating [Twilio](https://twilio.com/) and [Stripe](https://stripe.com/).
 
+![Example Screenshot](/web/img/post-sample-image.jpg?raw=true "Example Screenshot")
+
 ## Getting started
 
 Install dependencies:
@@ -24,7 +26,13 @@ Start the server:
 php app/console server:run
 ```
 
-You can now log in with the username and password `test` at http://127.0.0.1:8000/login
+Use [ngrok](http://ngrok.io) to tunnel to the server:
+
+```
+ngrok http 8000
+```
+
+You can now log in with the username and password `test` at http://xxxxxxxx.ngrok.io/login
 
 ## Credits
 

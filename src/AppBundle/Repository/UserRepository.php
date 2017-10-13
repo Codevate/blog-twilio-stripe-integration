@@ -16,9 +16,9 @@ class UserRepository extends EntityRepository
     return $this
       ->createQueryBuilder('u')
       ->select('COUNT(u.id)')
-      ->andWhere('u.premium = :premium')
+      ->andWhere('u.phoneNumber.verified = :verified')
       ->andWhere('u.phoneNumber.verificationCode = :code')
-      ->setParameter('premium', false)
+      ->setParameter('verified', false)
       ->getQuery();
   }
 

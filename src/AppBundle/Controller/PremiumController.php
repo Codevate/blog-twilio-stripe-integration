@@ -46,7 +46,7 @@ class PremiumController extends Controller
 
     if ($request->isXmlHttpRequest()) {
       return new JsonResponse([
-        'premium' => $user->isPremium(),
+        'verified' => $phoneNumber->isVerified(),
       ]);
     }
 

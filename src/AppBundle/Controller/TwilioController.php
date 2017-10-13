@@ -55,6 +55,7 @@ class TwilioController extends Controller
 
     if ($user) {
       $response->say('You have been upgraded to premium, goodbye.', $this->voiceEngine);
+      $user->getPhoneNumber()->setVerified(true);
       $user->setPremium(true);
       $manager->flush();
     } else {

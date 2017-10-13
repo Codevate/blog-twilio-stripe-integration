@@ -28,7 +28,7 @@
             complete: poll,
             timeout: timeout,
             success: function (data) {
-              if (data.premium) {
+              if (data.verified) {
                 window.location.replace('{{ redirect }}');
               }
             }

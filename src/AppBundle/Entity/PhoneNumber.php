@@ -39,6 +39,13 @@ class PhoneNumber
   protected $verificationCode;
 
   /**
+   * @var bool
+   *
+   * @ORM\Column(name="verified", type="boolean")
+   */
+  protected $verified = false;
+
+  /**
    * @param string $number
    * @return $this
    */
@@ -92,5 +99,24 @@ class PhoneNumber
   public function getVerificationCode()
   {
     return $this->verificationCode;
+  }
+
+  /**
+   * @param bool $verified
+   * @return $this
+   */
+  public function setVerified($verified)
+  {
+    $this->verified = $verified;
+
+    return $this;
+  }
+
+  /**
+   * @return bool
+   */
+  public function isVerified()
+  {
+    return $this->verified;
   }
 }

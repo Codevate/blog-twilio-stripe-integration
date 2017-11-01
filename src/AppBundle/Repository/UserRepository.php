@@ -9,20 +9,6 @@ use Doctrine\ORM\Query;
 class UserRepository extends EntityRepository
 {
   /**
-   * @return Query
-   */
-  public function getDuplicateVerificationCodeCountQuery()
-  {
-    return $this
-      ->createQueryBuilder('u')
-      ->select('COUNT(u.id)')
-      ->andWhere('u.phoneNumber.verified = :verified')
-      ->andWhere('u.phoneNumber.verificationCode = :code')
-      ->setParameter('verified', false)
-      ->getQuery();
-  }
-
-  /**
    * @param $chargeId
    * @return mixed
    * @throws NonUniqueResultException

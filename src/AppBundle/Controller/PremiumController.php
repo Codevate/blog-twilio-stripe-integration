@@ -78,16 +78,9 @@ class PremiumController extends Controller
       $form->handleRequest($request);
 
       if ($form->isValid()) {
-        $manager = $this->getDoctrine()->getManager();
-        $query = $manager->getRepository(User::class)->getDuplicateVerificationCodeCountQuery();
-
-        do {
-          $phoneNumber->setVerificationCode();
-          $query->setParameter('code', $phoneNumber->getVerificationCode());
-        } while ($query->getSingleScalarResult() > 0);
-
+        $phoneNumber->setVerificationCode();
         $this->getUser()->setPhoneNumber($phoneNumber);
-        $manager->flush();
+        $this->getDoctrine()->getManager()->flush();
 
         $this->get('twilio.client')->calls->create(
           $phoneNumber->getNumber(),
